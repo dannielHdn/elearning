@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.imsoftware.students.domain.PopularSubjectDTO;
 import com.imsoftware.students.domain.StudentDTO;
 import com.imsoftware.students.service.IStudentService;
 
@@ -21,5 +22,10 @@ public class StudentController {
 	@GetMapping("/students")
 	Collection<StudentDTO> all() {
 		return studentService.findAll();
+	}
+	
+	@GetMapping("/popularsubject")
+	PopularSubjectDTO getPopularSubject() {
+		return this.studentService.findAllAndShowIfHaveAPopularSubject();
 	}
 }
